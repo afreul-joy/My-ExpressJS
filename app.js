@@ -1,22 +1,17 @@
 const express = require("express");
 const app = express();
+const userRouter = require("./routes/user.route");
 
+app.use(userRouter);  // user Routes using 
+
+//-------------ROOT PAGE ------------
 app.get("/", (req, res) => {
   res.send("Server returned");
 });
-//-------- only get request can test on browser------
-app.get("/about", (req, res) => {
-  res.send("I am about route");
-});
-//-------- Others  api request testing need to "POSTMAN OR THUNDER CLIENT"----
-app.post("/", (req, res) => {
-    res.send("POST request succeeded");
-  });
-app.put("/", (req, res) => {
-    res.send("Put request succeeded");
-  });
-app.delete("/", (req, res) => {
-    res.send("Delete request succeeded");
-  });
 
-module.exports = app; 
+//-------------handle bad url request------------
+app.use((req, res) => {
+  res.send("<h1>Bad Request - 404 - PAGE NOT FOUND </h1>");
+});
+
+module.exports = app;
