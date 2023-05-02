@@ -3,10 +3,12 @@ const app = express();
 const userRouter = require("./routes/user.route");
 const searchRoute = require("./routes/search.route");
 const productRoute = require("./routes/product.route");
+const formRoute = require("./routes/form.route");
 
 app.use(userRouter);  // user Routes using 
 app.use(searchRoute);
 app.use(productRoute);
+app.use(formRoute);
 
 
 //-------------ROOT PAGE ------------
